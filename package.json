@@ -1,6 +1,6 @@
 {
   "name": "@acedatacloud/n8n-nodes-media",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Generate music, images and videos with Ace Data Cloud and retrieve existing media tasks in n8n.",
   "license": "MIT",
   "homepage": "https://github.com/AceDataCloud/MediaN8N",

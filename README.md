@@ -8,7 +8,7 @@ In self-hosted n8n, open **Settings → Community nodes → Install**, enter `@a
 
 ## Credentials
 
-Register with Ace Data Cloud, enable the services you intend to use, and create an application token in the console. For a workflow spanning multiple services, select a token with access to those services. Paste it into the **Ace Data Cloud Media API** credential and select an enabled **Service to Test**. Testing sends an empty task lookup. A token limited to one service works with that service. [Ace Data Cloud applications](https://platform.acedata.cloud/console/applications)
+Register with Ace Data Cloud, enable the services you intend to use, and create an application token in the console. For a workflow spanning multiple services, select a token with access to those services. Paste it into the **Ace Data Cloud Media API** credential and select an enabled **Service to Test**. Testing sends an empty task lookup. A token limited to one service works with that service. [Ace Data Cloud applications](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen)
 
 ## Use the node
 
@@ -22,7 +22,7 @@ Register with Ace Data Cloud, enable the services you intend to use, and create 
 | Task | Get Many | Select a service and supply up to 50 task IDs separated by commas or new lines. Each matching task becomes a separate output item. |
 | Task | Get | Choose the original service and enter its task ID. Returns status, result data, and the original task record. |
 
-Creation processes each input item separately and can incur a charge. To continue after a timeout, query the existing task ID. In a polling workflow use a Wait node between lookups and a time limit. Use returned media when `successful` is true. [Service pricing](https://platform.acedata.cloud/models)
+Creation processes each input item separately and can incur a charge. To continue after a timeout, query the existing task ID. In a polling workflow use a Wait node between lookups and a time limit. Use returned media when `successful` is true. [Service pricing](https://platform.acedata.cloud/models?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen)
 
 Import [Get an existing media task](examples/get-task.json) to try a lookup. Choose your credential, service and an existing task ID before running.
 

@@ -9,7 +9,10 @@ export class AceDataCloudMediaApi implements ICredentialType {
 	name = 'aceDataCloudMediaApi';
 	displayName = 'Ace Data Cloud Media API';
 	documentationUrl = 'https://github.com/AceDataCloud/MediaN8N#credentials';
-	icon = 'file:../nodes/AceDataCloud/acedatacloud.png' as const;
+	icon = {
+		light: 'file:../nodes/AceDataCloud/acedatacloud.png',
+		dark: 'file:../nodes/AceDataCloud/acedatacloud.dark.png',
+	} as const;
 	properties: INodeProperties[] = [
 		{
 			displayName: 'API Token',
@@ -19,6 +22,7 @@ export class AceDataCloudMediaApi implements ICredentialType {
 			required: true,
 			default: '',
 			description: 'Application token from Ace Data Cloud with access to the selected services',
+			hint: 'Get a token for the services you use in <a href="https://platform.acedata.cloud/console/applications?utm_source=n8n&amp;utm_medium=referral&amp;utm_campaign=evergreen" target="_blank">Ace Data Cloud Applications</a>',
 		},
 		{
 			displayName: 'Service to Test',
