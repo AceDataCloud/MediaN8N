@@ -233,3 +233,29 @@ test('task polling distinguishes pending and failed outcomes', async () => {
 		assert.equal(json.finished, status === 'failed');
 	}
 });
+
+for (const service of ['suno', 'seedream', 'seedance', 'minimax']) {
+	test(`Task/Get Many for ${service} fans out only the requested tasks`, async () => {
+		const params = { resource: 'task', operation: 'getMany', service, taskIds: 'one,\n two' };
+		const ctx = context(params, [{ items: [{ id: 'one' }, { id: 'two' }] }]);
+		const [rows] = await node.execute.call(ctx);
+		assert.deepEqual(ctx.calls[0].body, { action: 'retrieve_batch', ids: ['one', 'two'] });
+		assert.equal(ctx.calls[0].url, `https://api.acedata.cloud/${service}/tasks`);
+		assert.deepEqual(
+			rows.map((r) => [r.json.taskId, r.pairedItem.item]),
+			[
+				['one', 0],
+				['two', 0],
+			],
+		);
+		assert.deepEqual(await node.execute.call(context(params, [{ items: [] }])), [[]]);
+		await assert.rejects(
+			node.execute.call(context({ ...params, taskIds: ', ,' }, [])),
+			/between 1 and 50/,
+		);
+		await assert.rejects(
+			node.execute.call(context(params, [{ items: [{ id: 'other' }] }])),
+			/not found/,
+		);
+	});
+}

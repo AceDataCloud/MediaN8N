@@ -1,24 +1,15 @@
-import { NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
+import { NodeConnectionTypes } from 'n8n-workflow';
 import type {
 	IExecuteFunctions,
 	INodeExecutionData,
 	INodeType,
 	INodeTypeDescription,
 } from 'n8n-workflow';
-import {
-	failure,
-	object,
-	output,
-	request,
-	requiredText,
-	submissionResult,
-	taskResult,
-} from './helpers';
+import { failure, object, output, request, requiredText, submissionResult } from './helpers';
 import { generation } from './generation';
 import { properties } from './properties';
 
-const credential = 'aceDataCloudMediaApi';
-const taskServices = ['minimax', 'seedance', 'seedream', 'suno'];
+import { credential, getTasks } from './tasks';
 
 export class AceDataCloud implements INodeType {
 	description: INodeTypeDescription = {
@@ -45,25 +36,7 @@ export class AceDataCloud implements INodeType {
 				const resource = this.getNodeParameter('resource', index) as string;
 				const operation = this.getNodeParameter('operation', index) as string;
 				if (resource === 'task') {
-					const service = this.getNodeParameter('service', index) as string;
-					if (operation !== 'get' || !taskServices.includes(service))
-						throw new NodeOperationError(
-							this.getNode(),
-							'Select a supported task service and operation',
-						);
-					const id = requiredText(this.getNodeParameter('taskId', index), 'Task ID');
-					const response = await request(this, credential, `/${service}/tasks`, {
-						action: 'retrieve',
-						id,
-					});
-					const record = response.task ? object(response.task) : response;
-					if ((record.id ?? record.task_id) !== id)
-						throw new NodeOperationError(
-							this.getNode(),
-							'The task was not found. Check the original service and task ID',
-							{ itemIndex: index },
-						);
-					result.push(...output(this, [{ service, ...taskResult(record), task: record }], index));
+					result.push(...output(this, await getTasks(this, index, operation), index));
 					continue;
 				}
 				const prompt = requiredText(this.getNodeParameter('prompt', index), 'Prompt');

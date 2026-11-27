@@ -128,6 +128,7 @@ export const properties: INodeProperties[] = [
 				value: 'get',
 				action: 'Get a media task',
 			},
+			{ name: 'Get Many', value: 'getMany', action: 'Get many media tasks' },
 		],
 	},
 	{
@@ -169,9 +170,20 @@ export const properties: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: ['task'],
+				operation: ['get'],
 			},
 		},
 		description: 'ID returned by the original creation request',
+	},
+	{
+		displayName: 'Task IDs',
+		name: 'taskIds',
+		type: 'string',
+		typeOptions: { rows: 3 },
+		default: '',
+		required: true,
+		displayOptions: { show: { resource: ['task'], operation: ['getMany'] } },
+		description: 'Up to 50 task IDs from the same service, separated by commas or new lines',
 	},
 	{
 		displayName: 'Prompt',

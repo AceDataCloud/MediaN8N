@@ -19,6 +19,7 @@ Register with Ace Data Cloud, enable the services you intend to use, and create 
 | Seedream Image | Generate Image | Supply a prompt for Seedream 5.0 Pro. Options include output size and response format. Returns `service` and `taskId`. |
 | Seedance Video | Generate Video | Supply a prompt for Seedance 2.0. Duration and resolution are optional. Returns `service` and `taskId`. |
 | MiniMax Video | Generate Video | Supply a prompt for MiniMax H3. Duration and resolution are optional. Returns `service` and `taskId`. |
+| Task | Get Many | Select a service and supply up to 50 task IDs separated by commas or new lines. Each matching task becomes a separate output item. |
 | Task | Get | Choose the original service and enter its task ID. Returns status, result data, and the original task record. |
 
 Creation processes each input item separately and can incur a charge. To continue after a timeout, query the existing task ID. In a polling workflow use a Wait node between lookups and a time limit. Use returned media when `successful` is true. [Service pricing](https://platform.acedata.cloud/models)
