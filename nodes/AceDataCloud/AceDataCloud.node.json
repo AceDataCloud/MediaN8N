@@ -1,0 +1,26 @@
+{
+  "node": "@acedatacloud/n8n-nodes-media.aceDataCloud",
+  "nodeVersion": "1.0",
+  "codexVersion": "1.0",
+  "categories": [
+    "Marketing & Content"
+  ],
+  "resources": {
+    "primaryDocumentation": [
+      {
+        "url": "https://github.com/AceDataCloud/MediaN8N#use-the-node"
+      }
+    ],
+    "credentialDocumentation": [
+      {
+        "url": "https://github.com/AceDataCloud/MediaN8N#credentials"
+      }
+    ]
+  },
+  "alias": [
+    "Suno",
+    "Seedance",
+    "Seedream",
+    "MiniMax"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "name": "Retrieve an existing Ace Data Cloud task",
+  "nodes": [
+    {
+      "id": "start",
+      "name": "Start",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "query",
+      "name": "Get Media Task",
+      "type": "@acedatacloud/n8n-nodes-media.aceDataCloud",
+      "typeVersion": 1,
+      "position": [
+        220,
+        0
+      ],
+      "parameters": {
+        "resource": "task",
+        "operation": "get",
+        "service": "suno",
+        "taskId": "REPLACE_WITH_EXISTING_TASK_ID"
+      }
+    }
+  ],
+  "connections": {
+    "Start": {
+      "main": [
+        [
+          {
+            "node": "Get Media Task",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "active": false,
+  "id": "aceMediaGetTask"
+}
