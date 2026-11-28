@@ -8,9 +8,9 @@ In self-hosted n8n, open **Settings → Community nodes → Install**, enter `@a
 
 ## Credentials
 
-Sign in to [Applications](https://platform.acedata.cloud/console/applications) and open **General Application**. If it is missing, select **Initialize General Application**. Click the copy button marked **1** beside **API KEY**.
+Sign in to [Applications](https://platform.acedata.cloud/console/applications) and open **General Application**. If it is missing, select **Initialize General Application**. Click the copy button to the right of **API KEY**.
 
-![Copy the General Application API key with the button marked 1](https://raw.githubusercontent.com/AceDataCloud/NanoBananaDify/2522b2f57210597af2db866445319334a1677a23/_assets/tutorial/get-api-key-en.png)
+![Copy the API key from General Application](https://cdn.acedata.cloud/dvc3cg.jpg)
 
 In n8n, paste the raw key into **API Token** in the **Ace Data Cloud Media API** credential and select an enabled **Service to Test**. The test sends an empty task lookup. For a workflow spanning multiple services, use an application key that can access all of them. A key limited to one service works with that service.
 
